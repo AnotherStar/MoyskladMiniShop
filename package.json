@@ -1,0 +1,29 @@
+{
+    "name": "moysklad-mini-shop",
+    "version": "0.0.1",
+    "description": "Простой интернет-магазин для сервиса Мойсклад",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nuxt",
+        "build": "nuxt build",
+        "start": "nuxt start"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AnotherStar/MoyskladMiniShop.git"
+    },
+    "author": "AnotherStar",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/AnotherStar/MoyskladMiniShop/issues"
+    },
+    "homepage": "https://github.com/AnotherStar/MoyskladMiniShop#readme",
+    "dependencies": {
+        "@nuxtjs/axios": "^5.13.6",
+        "bootstrap-vue": "^2.21.2",
+        "express": "^4.17.1",
+        "mongoose": "^5.13.12",
+        "nuxt": "^2.15.8",
+        "resourcejs": "^2.4.0"
+    }
+}
