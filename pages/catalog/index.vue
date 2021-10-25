@@ -1,9 +1,10 @@
 <template>
     <div>
-        <ApiList v-slot="{ items: products }" collection="Product">
-            <div v-for="(product, productIndex) in products" :key="`product_${productIndex}`">
-                {{ product }}
-            </div>
+        <ApiList v-slot="{ items }" collection="Product" :skip="skip" :limit="limit">
+            <ProductList :products="items" />
+            <b-button @click="skip -= limit">–</b-button>
+            {{ skip }}
+            <b-button @click="skip += limit">+</b-button>
         </ApiList>
     </div>
 </template>
@@ -14,7 +15,8 @@ export default {
 
     data() {
         return {
-            products: [],
+            skip: 0,
+            limit: 15,
         };
     },
 

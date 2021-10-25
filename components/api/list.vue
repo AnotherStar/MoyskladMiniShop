@@ -7,25 +7,49 @@
 <script>
 export default {
     props: {
-        collection: {
-            type: String,
+        collection: String,
+        limit: {
+            type: Number,
+            default: 10,
+        },
+        skip: {
+            type: Number,
+            default: 0,
+        },
+        immediate: {
+            type: Boolean,
+            default: true,
         },
     },
 
     data() {
         return {
             items: null,
+            isLoading: false,
         };
     },
 
-    computed: {},
+    computed: {
+        filter() {
+            return {
+                limit: this.limit,
+                skip: this.skip,
+            };
+        },
+    },
 
-    watch: {},
+    watch: {
+        filter() {
+            this.getItems();
+        },
+    },
 
     methods: {
         async getItems() {
             this.isLoading = true;
-            this.$axios(`/api/${this.collection}`)
+            this.$axios(`/api/${this.collection}`, {
+                params: this.filter,
+            })
                 .then(response => response.data)
                 .then(data => {
                     this.items = data;
@@ -37,7 +61,7 @@ export default {
     },
 
     mounted() {
-        this.getItems();
+        if (this.immediate) this.getItems();
     },
 };
 </script>
